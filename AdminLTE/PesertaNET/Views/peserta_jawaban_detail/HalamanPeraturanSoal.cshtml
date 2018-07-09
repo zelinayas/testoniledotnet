@@ -1,0 +1,82 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Peserta TestTime</title>
+    <link rel="icon" type="asset/image/png" href="asset/img/penting.png">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="~/Content/User/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/User/css/bootstrap-select.css">
+    <link rel="stylesheet" href="~/Content/User/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="~/Content/User/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/User/css/icheck/blue.min.css">
+    <link rel="stylesheet" href="~/Content/User/css/AdminLTE.css">
+    <link rel="stylesheet" href="~/Content/User/css/skins/skin-blue.css">
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition login-page">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <section class="content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <center> <h1 class="perat">PERATURAN</h1> </center>
+                    <br />
+                    <ol id="peraturan">
+                        <li>Membaca dengan seksama petunjuk mengerjakan soal yang tersedia.</li>
+
+                        <br />
+                        <li>Menjawab butir soal dengan cara mengklik opsi jawaban menggunakan mouse.</li>
+                        <br />
+                        <li>
+                            Peserta dapat mengubah pilihan jawaban dengan cara mengklik pilihan jawaban lain yang dianggap benar.
+                            Jawaban peserta otomatis akan terganti dengan pilihan jawaban yang terakhir.
+                        </li>
+                        <br />
+
+
+                        <li>Silahkan klik START untuk memulai ujian.</li>
+                    </ol>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-10 col-md-12">
+
+                        <button> @Html.ActionLink("Start", "HalamanSoal", "peserta_jawaban_detail") </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.login-box -->
+        <script src="~/Content/User/js/plugins/jquery/jquery-3.3.1.js"></script>
+        <script src="~/Content/User/js/plugins/bootstrap/bootstrap.js"></script>
+        <script src="~/Content/User/js/plugins/fastclick/fastclick.js"></script>
+        <script src="~/Content/User/js/plugins/slimscroll/jquery.slimscroll.js"></script>
+        <script src="~/Content/User/js/plugins/bootstrap-select/bootstrap-select.js"></script>
+        <script src="~/Content/User/js/plugins/moment/moment.js"></script>
+        <script src="~/Content/User/js/plugins/datepicker/bootstrap-datepicker.js"></script>
+        <script src="~/Content/User/js/plugins/icheck/icheck.js"></script>
+        @*<script src="~/Content/js/plugins/validator.js"></script>*@
+        <script src="~/Content/User/js/plugins/inputmask/jquery.inputmask.bundle.js"></script>
+        <script src="~/Content/User/js/adminlte.js"></script>
+        <script src="~/Content/User/js/init.js"></script>
+
+
+    }
+
+    @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Logout", "Login", "peserta_jawaban_detail")
+            </div>
+        </div>*@
+</body>
+</html>

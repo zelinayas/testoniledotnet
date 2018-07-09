@@ -1,0 +1,142 @@
+﻿@model PesertaNET.Models.soal
+@{var Nextid = Model.id + 1;}
+
+@{
+    ViewBag.Title = "HalamanSoal";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Peserta TestTime</title>
+    <link rel="icon" type="asset/image/png" href="asset/img/penting.png">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="~/Content/User/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/User/css/bootstrap-select.css">
+    <link rel="stylesheet" href="~/Content/User/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="~/Content/User/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/User/css/icheck/blue.min.css">
+    <link rel="stylesheet" href="~/Content/User/css/AdminLTE.css">
+    <link rel="stylesheet" href="~/Content/User/css/skins/skin-blue.css">
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+
+
+
+<body>
+   
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-12">
+                <table class="table">
+
+                    <tr>
+
+                        <td>
+                            <strong> @Html.DisplayFor(modelItem => Model.isi_soal) </strong>   
+                            <input type="hidden" id="idsoal" value="@Model.id" />
+
+                            @foreach (var item1 in Model.soal_pilihan_jawaban)
+                            {
+                                <div>
+                                    <strong>  <input type="radio" onclick="enableBtn()" class="form-control pilihan" name="pilihanjawaban1" value="@item1.pilihanjawaban1">  @Html.DisplayFor(modelItem => item1.pilihanjawaban1) </strong>  
+
+                                </div>
+
+                            }
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-10 col-md-12" id="NextBtn" style="visibility: hidden">
+                <button id="submit" value="Next"> Next </button>        
+            </div>
+        </div>
+    
+    <script src="~/Content/User/js/plugins/jquery/jquery-3.3.1.js"></script>
+    <script src="~/Content/User/js/plugins/bootstrap/bootstrap.js"></script>
+    <script src="~/Content/User/js/plugins/fastclick/fastclick.js"></script>
+    <script src="~/Content/User/js/plugins/slimscroll/jquery.slimscroll.js"></script>
+    <script src="~/Content/User/js/plugins/bootstrap-select/bootstrap-select.js"></script>
+    <script src="~/Content/User/js/plugins/moment/moment.js"></script>
+    <script src="~/Content/User/js/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/Content/User/js/plugins/icheck/icheck.js"></script>
+    @*<script src="~/Content/js/plugins/validator.js"></script>*@
+    <script src="~/Content/User/js/plugins/inputmask/jquery.inputmask.bundle.js"></script>
+    <script src="~/Content/User/js/adminlte.js"></script>
+    <script src="~/Content/User/js/init.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("ins").click(function () {
+                console.log($("input[name=pilihanjawaban1]:checked").val());
+                enableBtn();
+            });
+        });
+        function enableBtn() {
+            $("#NextBtn").css("visibility", "visible");
+
+        }
+    </script>
+
+    
+
+    <script type="text/javascript" >
+
+        $(document).ready(function () {
+            //validation of order
+            var isAllValid = true;
+
+            $('#submit').click(function () {
+
+                //Save if valid
+                if (isAllValid) {
+                    var data = {
+                        idSoal: parseInt($("#idsoal").val()),
+                        idPeserta: 2,
+                        Jawaban: $('input[name="pilihanjawaban1"]:checked').val()
+                    }
+
+                    $(this).val('Please wait...');
+                    var idSoal = parseInt($("#idsoal").val());
+                    var idPeserta = 2;
+                    var Jawaban = $('input[name="pilihanjawaban1"]:checked').val();
+
+                    $.ajax({
+                        url: '/api/JawabanPeserta/?idSoal='+idSoal+'&idPeserta='+idPeserta+'&Jawaban='+Jawaban,
+                        type: "GET",
+                        //data: JSON.stringify(data),
+                        dataType: "JSON",
+                        contentType: "application/json",
+                        success: function (d) {
+                            location.href = "/peserta_jawaban_detail/HalamanSoal/" + (parseInt($("#idsoal").val())+1)
+                        }
+                    });
+
+                }
+
+            }); 
+
+            
+
+        });
+    </script>
+
+</body>
+    
+</html>
+
+
+
+
+

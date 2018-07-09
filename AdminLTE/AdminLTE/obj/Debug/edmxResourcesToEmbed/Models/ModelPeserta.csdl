@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="jawaban_peserta">
+    <Key>
+      <PropertyRef Name="id_jwbnpeserta" />
+    </Key>
+    <Property Name="id_jwbnpeserta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_peserta" Type="Int32" Nullable="false" />
+    <Property Name="id_waktutes" Type="Int32" Nullable="false" />
+    <Property Name="id_soal" Type="Int32" Nullable="false" />
+    <Property Name="jwbn_peserta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="peserta" Relationship="Self.FK_jawaban_peserta_peserta" FromRole="jawaban_peserta" ToRole="peserta" />
+    <NavigationProperty Name="soal" Relationship="Self.FK_jawaban_peserta_soal" FromRole="jawaban_peserta" ToRole="soal" />
+    <NavigationProperty Name="waktu_tes" Relationship="Self.FK_jawaban_peserta_waktu_tes" FromRole="jawaban_peserta" ToRole="waktu_tes" />
+  </EntityType>
+  <EntityType Name="kelompok_soal">
+    <Key>
+      <PropertyRef Name="id_kelompok_soal" />
+    </Key>
+    <Property Name="id_kelompok_soal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_soal" Type="Int32" Nullable="false" />
+    <Property Name="nama_kelompok_soal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="soal" Relationship="Self.FK_kelompok_soal_soal" FromRole="kelompok_soal" ToRole="soal" />
+  </EntityType>
+  <EntityType Name="peserta">
+    <Key>
+      <PropertyRef Name="id_peserta" />
+    </Key>
+    <Property Name="id_peserta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="jawaban_peserta" Relationship="Self.FK_jawaban_peserta_peserta" FromRole="peserta" ToRole="jawaban_peserta" />
+    <NavigationProperty Name="pilih_peserta" Relationship="Self.FK_pilih_peserta_peserta" FromRole="peserta" ToRole="pilih_peserta" />
+  </EntityType>
+  <EntityType Name="pilih_peserta">
+    <Key>
+      <PropertyRef Name="id_pilih" />
+    </Key>
+    <Property Name="id_pilih" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_peserta" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="peserta" Relationship="Self.FK_pilih_peserta_peserta" FromRole="pilih_peserta" ToRole="peserta" />
+  </EntityType>
+  <EntityType Name="pilihan_jawaban">
+    <Key>
+      <PropertyRef Name="id_pilihanjwbn" />
+    </Key>
+    <Property Name="id_pilihanjwbn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_soal" Type="Int32" Nullable="false" />
+    <Property Name="pilihan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="pilihan_jwbn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="kunci_jwbn" Type="Byte" />
+    <NavigationProperty Name="soal" Relationship="Self.FK_pilihan_jawaban_soal" FromRole="pilihan_jawaban" ToRole="soal" />
+  </EntityType>
+  <EntityType Name="profil_peserta">
+    <Key>
+      <PropertyRef Name="id_profil" />
+    </Key>
+    <Property Name="id_profil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_peserta" Type="Int32" Nullable="false" />
+    <Property Name="nama_peserta" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="alamat_peserta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tempat_lahir" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tanggal_lahir" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="no_hp" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="soal">
+    <Key>
+      <PropertyRef Name="id_soal" />
+    </Key>
+    <Property Name="id_soal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="soal1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="nilai_soal" Type="Int32" />
+    <NavigationProperty Name="jawaban_peserta" Relationship="Self.FK_jawaban_peserta_soal" FromRole="soal" ToRole="jawaban_peserta" />
+    <NavigationProperty Name="kelompok_soal" Relationship="Self.FK_kelompok_soal_soal" FromRole="soal" ToRole="kelompok_soal" />
+    <NavigationProperty Name="pilihan_jawaban" Relationship="Self.FK_pilihan_jawaban_soal" FromRole="soal" ToRole="pilihan_jawaban" />
+    <NavigationProperty Name="subtes" Relationship="Self.FK_subtes_soal" FromRole="soal" ToRole="subtes" />
+    <NavigationProperty Name="tipe_soal" Relationship="Self.FK_tipe_soal_soal" FromRole="soal" ToRole="tipe_soal" />
+  </EntityType>
+  <EntityType Name="sub">
+    <Key>
+      <PropertyRef Name="id_sub" />
+    </Key>
+    <Property Name="id_sub" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_waktutes" Type="Int32" Nullable="false" />
+    <Property Name="durasi_sub" Type="Time" Precision="7" />
+    <NavigationProperty Name="waktu_tes" Relationship="Self.FK_sub_waktu_tes" FromRole="sub" ToRole="waktu_tes" />
+    <NavigationProperty Name="subtes" Relationship="Self.FK_subtes_sub" FromRole="sub" ToRole="subtes" />
+  </EntityType>
+  <EntityType Name="subtes">
+    <Key>
+      <PropertyRef Name="id_subtes" />
+    </Key>
+    <Property Name="id_subtes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_sub" Type="Int32" Nullable="false" />
+    <Property Name="id_soal" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="soal" Relationship="Self.FK_subtes_soal" FromRole="subtes" ToRole="soal" />
+    <NavigationProperty Name="sub" Relationship="Self.FK_subtes_sub" FromRole="subtes" ToRole="sub" />
+  </EntityType>
+  <EntityType Name="tipe_soal">
+    <Key>
+      <PropertyRef Name="id_tipe_soal" />
+    </Key>
+    <Property Name="id_tipe_soal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_soal" Type="Int32" Nullable="false" />
+    <Property Name="tipe_soal1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="soal" Relationship="Self.FK_tipe_soal_soal" FromRole="tipe_soal" ToRole="soal" />
+  </EntityType>
+  <EntityType Name="waktu_tes">
+    <Key>
+      <PropertyRef Name="id_waktutes" />
+    </Key>
+    <Property Name="id_waktutes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tanggal_tes" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="jawaban_peserta" Relationship="Self.FK_jawaban_peserta_waktu_tes" FromRole="waktu_tes" ToRole="jawaban_peserta" />
+    <NavigationProperty Name="sub" Relationship="Self.FK_sub_waktu_tes" FromRole="waktu_tes" ToRole="sub" />
+  </EntityType>
+  <EntityType Name="MSreplication_options">
+    <Key>
+      <PropertyRef Name="optname" />
+      <PropertyRef Name="value" />
+      <PropertyRef Name="major_version" />
+      <PropertyRef Name="minor_version" />
+      <PropertyRef Name="revision" />
+      <PropertyRef Name="install_failures" />
+    </Key>
+    <Property Name="optname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="value" Type="Boolean" Nullable="false" />
+    <Property Name="major_version" Type="Int32" Nullable="false" />
+    <Property Name="minor_version" Type="Int32" Nullable="false" />
+    <Property Name="revision" Type="Int32" Nullable="false" />
+    <Property Name="install_failures" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="spt_fallback_db">
+    <Key>
+      <PropertyRef Name="xserver_name" />
+      <PropertyRef Name="xdttm_ins" />
+      <PropertyRef Name="xdttm_last_ins_upd" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="dbid" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="version" />
+    </Key>
+    <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="xfallback_dbid" Type="Int16" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dbid" Type="Int16" Nullable="false" />
+    <Property Name="status" Type="Int16" Nullable="false" />
+    <Property Name="version" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="spt_fallback_dev">
+    <Key>
+      <PropertyRef Name="xserver_name" />
+      <PropertyRef Name="xdttm_ins" />
+      <PropertyRef Name="xdttm_last_ins_upd" />
+      <PropertyRef Name="low" />
+      <PropertyRef Name="high" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="phyname" />
+    </Key>
+    <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="xfallback_low" Type="Int32" />
+    <Property Name="xfallback_drive" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="low" Type="Int32" Nullable="false" />
+    <Property Name="high" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Int16" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phyname" Type="String" MaxLength="127" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="spt_fallback_usg">
+    <Key>
+      <PropertyRef Name="xserver_name" />
+      <PropertyRef Name="xdttm_ins" />
+      <PropertyRef Name="xdttm_last_ins_upd" />
+      <PropertyRef Name="dbid" />
+      <PropertyRef Name="segmap" />
+      <PropertyRef Name="lstart" />
+      <PropertyRef Name="sizepg" />
+      <PropertyRef Name="vstart" />
+    </Key>
+    <Property Name="xserver_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="xdttm_ins" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="xdttm_last_ins_upd" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="xfallback_vstart" Type="Int32" />
+    <Property Name="dbid" Type="Int16" Nullable="false" />
+    <Property Name="segmap" Type="Int32" Nullable="false" />
+    <Property Name="lstart" Type="Int32" Nullable="false" />
+    <Property Name="sizepg" Type="Int32" Nullable="false" />
+    <Property Name="vstart" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="spt_monitor">
+    <Key>
+      <PropertyRef Name="lastrun" />
+      <PropertyRef Name="cpu_busy" />
+      <PropertyRef Name="io_busy" />
+      <PropertyRef Name="idle" />
+      <PropertyRef Name="pack_received" />
+      <PropertyRef Name="pack_sent" />
+      <PropertyRef Name="connections" />
+      <PropertyRef Name="pack_errors" />
+      <PropertyRef Name="total_read" />
+      <PropertyRef Name="total_write" />
+      <PropertyRef Name="total_errors" />
+    </Key>
+    <Property Name="lastrun" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="cpu_busy" Type="Int32" Nullable="false" />
+    <Property Name="io_busy" Type="Int32" Nullable="false" />
+    <Property Name="idle" Type="Int32" Nullable="false" />
+    <Property Name="pack_received" Type="Int32" Nullable="false" />
+    <Property Name="pack_sent" Type="Int32" Nullable="false" />
+    <Property Name="connections" Type="Int32" Nullable="false" />
+    <Property Name="pack_errors" Type="Int32" Nullable="false" />
+    <Property Name="total_read" Type="Int32" Nullable="false" />
+    <Property Name="total_write" Type="Int32" Nullable="false" />
+    <Property Name="total_errors" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_jawaban_peserta_peserta">
+    <End Role="peserta" Type="Self.peserta" Multiplicity="1" />
+    <End Role="jawaban_peserta" Type="Self.jawaban_peserta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="peserta">
+        <PropertyRef Name="id_peserta" />
+      </Principal>
+      <Dependent Role="jawaban_peserta">
+        <PropertyRef Name="id_peserta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_jawaban_peserta_soal">
+    <End Role="soal" Type="Self.soal" Multiplicity="1" />
+    <End Role="jawaban_peserta" Type="Self.jawaban_peserta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="soal">
+        <PropertyRef Name="id_soal" />
+      </Principal>
+      <Dependent Role="jawaban_peserta">
+        <PropertyRef Name="id_soal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_jawaban_peserta_waktu_tes">
+    <End Role="waktu_tes" Type="Self.waktu_tes" Multiplicity="1" />
+    <End Role="jawaban_peserta" Type="Self.jawaban_peserta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="waktu_tes">
+        <PropertyRef Name="id_waktutes" />
+      </Principal>
+      <Dependent Role="jawaban_peserta">
+        <PropertyRef Name="id_waktutes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kelompok_soal_soal">
+    <End Role="soal" Type="Self.soal" Multiplicity="1" />
+    <End Role="kelompok_soal" Type="Self.kelompok_soal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="soal">
+        <PropertyRef Name="id_soal" />
+      </Principal>
+      <Dependent Role="kelompok_soal">
+        <PropertyRef Name="id_soal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pilih_peserta_peserta">
+    <End Role="peserta" Type="Self.peserta" Multiplicity="1" />
+    <End Role="pilih_peserta" Type="Self.pilih_peserta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="peserta">
+        <PropertyRef Name="id_peserta" />
+      </Principal>
+      <Dependent Role="pilih_peserta">
+        <PropertyRef Name="id_peserta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pilihan_jawaban_soal">
+    <End Role="soal" Type="Self.soal" Multiplicity="1" />
+    <End Role="pilihan_jawaban" Type="Self.pilihan_jawaban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="soal">
+        <PropertyRef Name="id_soal" />
+      </Principal>
+      <Dependent Role="pilihan_jawaban">
+        <PropertyRef Name="id_soal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_subtes_soal">
+    <End Role="soal" Type="Self.soal" Multiplicity="1" />
+    <End Role="subtes" Type="Self.subtes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="soal">
+        <PropertyRef Name="id_soal" />
+      </Principal>
+      <Dependent Role="subtes">
+        <PropertyRef Name="id_soal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tipe_soal_soal">
+    <End Role="soal" Type="Self.soal" Multiplicity="1" />
+    <End Role="tipe_soal" Type="Self.tipe_soal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="soal">
+        <PropertyRef Name="id_soal" />
+      </Principal>
+      <Dependent Role="tipe_soal">
+        <PropertyRef Name="id_soal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sub_waktu_tes">
+    <End Role="waktu_tes" Type="Self.waktu_tes" Multiplicity="1" />
+    <End Role="sub" Type="Self.sub" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="waktu_tes">
+        <PropertyRef Name="id_waktutes" />
+      </Principal>
+      <Dependent Role="sub">
+        <PropertyRef Name="id_waktutes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_subtes_sub">
+    <End Role="sub" Type="Self.sub" Multiplicity="1" />
+    <End Role="subtes" Type="Self.subtes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sub">
+        <PropertyRef Name="id_sub" />
+      </Principal>
+      <Dependent Role="subtes">
+        <PropertyRef Name="id_sub" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="jawaban_peserta" EntityType="Self.jawaban_peserta" />
+    <EntitySet Name="kelompok_soal" EntityType="Self.kelompok_soal" />
+    <EntitySet Name="peserta" EntityType="Self.peserta" />
+    <EntitySet Name="pilih_peserta" EntityType="Self.pilih_peserta" />
+    <EntitySet Name="pilihan_jawaban" EntityType="Self.pilihan_jawaban" />
+    <EntitySet Name="profil_peserta" EntityType="Self.profil_peserta" />
+    <EntitySet Name="soal" EntityType="Self.soal" />
+    <EntitySet Name="sub" EntityType="Self.sub" />
+    <EntitySet Name="subtes" EntityType="Self.subtes" />
+    <EntitySet Name="tipe_soal" EntityType="Self.tipe_soal" />
+    <EntitySet Name="waktu_tes" EntityType="Self.waktu_tes" />
+    <EntitySet Name="MSreplication_options" EntityType="Self.MSreplication_options" />
+    <EntitySet Name="spt_fallback_db" EntityType="Self.spt_fallback_db" />
+    <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" />
+    <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" />
+    <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" />
+    <AssociationSet Name="FK_jawaban_peserta_peserta" Association="Self.FK_jawaban_peserta_peserta">
+      <End Role="peserta" EntitySet="peserta" />
+      <End Role="jawaban_peserta" EntitySet="jawaban_peserta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_jawaban_peserta_soal" Association="Self.FK_jawaban_peserta_soal">
+      <End Role="soal" EntitySet="soal" />
+      <End Role="jawaban_peserta" EntitySet="jawaban_peserta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_jawaban_peserta_waktu_tes" Association="Self.FK_jawaban_peserta_waktu_tes">
+      <End Role="waktu_tes" EntitySet="waktu_tes" />
+      <End Role="jawaban_peserta" EntitySet="jawaban_peserta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kelompok_soal_soal" Association="Self.FK_kelompok_soal_soal">
+      <End Role="soal" EntitySet="soal" />
+      <End Role="kelompok_soal" EntitySet="kelompok_soal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pilih_peserta_peserta" Association="Self.FK_pilih_peserta_peserta">
+      <End Role="peserta" EntitySet="peserta" />
+      <End Role="pilih_peserta" EntitySet="pilih_peserta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pilihan_jawaban_soal" Association="Self.FK_pilihan_jawaban_soal">
+      <End Role="soal" EntitySet="soal" />
+      <End Role="pilihan_jawaban" EntitySet="pilihan_jawaban" />
+    </AssociationSet>
+    <AssociationSet Name="FK_subtes_soal" Association="Self.FK_subtes_soal">
+      <End Role="soal" EntitySet="soal" />
+      <End Role="subtes" EntitySet="subtes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tipe_soal_soal" Association="Self.FK_tipe_soal_soal">
+      <End Role="soal" EntitySet="soal" />
+      <End Role="tipe_soal" EntitySet="tipe_soal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sub_waktu_tes" Association="Self.FK_sub_waktu_tes">
+      <End Role="waktu_tes" EntitySet="waktu_tes" />
+      <End Role="sub" EntitySet="sub" />
+    </AssociationSet>
+    <AssociationSet Name="FK_subtes_sub" Association="Self.FK_subtes_sub">
+      <End Role="sub" EntitySet="sub" />
+      <End Role="subtes" EntitySet="subtes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

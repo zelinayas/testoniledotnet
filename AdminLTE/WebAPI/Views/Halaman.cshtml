@@ -1,0 +1,83 @@
+﻿@model IEnumerable<PesertaNET.Models.test_sub_soal>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.create_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.create_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.keterangan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.update_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.update_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soal_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.test_sub_id)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.create_by)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.create_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.keterangan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.update_by)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.update_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soal_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.test_sub_id)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

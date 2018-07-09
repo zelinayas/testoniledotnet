@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AdminLTE.Models.test_sub_soal>
+
+@{
+    ViewBag.Title = "View";
+}
+
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.soal.isi_soal)
+                @foreach (var item1 in item.soal.soal_pilihan_jawaban)
+                {
+                    <div><input type="radio" class="form-control" name="pilihanjawaban1" value="@item1.pilihanjawaban1">  @Html.DisplayFor(modelItem => item1.pilihanjawaban1) </div>
+
+                }
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<div class="form-group">
+    <div class="col-md-offset-10 col-md-12">
+        @*<input type="hidden" name="pilihanjawaban1" id="session" />*@
+        <button id="myBtn">  @Html.ActionLink("Next", "HalamanSoal", "peserta_jawaban_detail") </button>
+        @*<button onclick="setSession()">  @Html.ActionLink("Next", "HalamanSoal", "peserta_jawaban_detail") </button>*@
+
+    </div>
+</div>
+

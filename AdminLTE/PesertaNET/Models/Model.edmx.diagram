@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b3699eb334f84ca68d63e76473fb1c42" Name="Diagram1">
+        <EntityTypeShape EntityType="TesttimemeModel.admin" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesttimemeModel.peserta" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesttimemeModel.peserta_jawaban_detail" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesttimemeModel.peserta_profil" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesttimemeModel.peserta_test" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesttimemeModel.soal" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesttimemeModel.soal_kelompok" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesttimemeModel.soal_pilihan_jawaban" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesttimemeModel.soal_type" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesttimemeModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesttimemeModel.test" Width="1.5" PointX="0.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesttimemeModel.test_sub" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesttimemeModel.test_sub_soal" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="TesttimemeModel.FK9remes9a11kjdqoi1o4fptgeu" ManuallyRouted="false" />
+        <AssociationConnector Association="TesttimemeModel.FKn68db9r0w3dsqnhx1qua2ct4n" ManuallyRouted="false" />
+        <AssociationConnector Association="TesttimemeModel.FK17fx4kuald4bhd0hdahwht6m9" ManuallyRouted="false" />
+        <AssociationConnector Association="TesttimemeModel.FKotaslsowte3msnmuvb1ucltkl" ManuallyRouted="false" />
+        <AssociationConnector Association="TesttimemeModel.FK33kgxknk8m95q1wxmyekxcbll" ManuallyRouted="false" />
+        <AssociationConnector Association="TesttimemeModel.FKk9xa5vfl23cyi1bvk61wrh9dc" ManuallyRouted="false" />
+        <AssociationConnector Association="TesttimemeModel.FKmvddj0adltdu7kqjycmwiuiwr" ManuallyRouted="false" />
+        <AssociationConnector Association="TesttimemeModel.FKqk7s361fj4vo3j5h9a4pca01w" ManuallyRouted="false" />
+        <AssociationConnector Association="TesttimemeModel.FKsxfrhg7ionch0bow2120y36pb" ManuallyRouted="false" />
+        <AssociationConnector Association="TesttimemeModel.FK9bfpjwm4lr6mp1msl5ur65qhs" ManuallyRouted="false" />
+        <AssociationConnector Association="TesttimemeModel.FKitjix8o6qnyc5itn4ib2gmqvm" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,294 @@
+﻿@{
+    /**/
+
+    
+    Layout = null;
+}
+
+<h2> Details Pinjam entry form</h2>
+<div class="container" style="max-width:640px">
+    <div class="master">
+        <h4>Input Nota</h4>
+        <table>
+            <tr>
+              
+                <td>Tanggal Pinjam</td>
+                <td>
+                    <input type="text" id="dibuatPada" />
+                    <span class="error">Mohon Diisi</span>
+                </td>
+              
+            </tr>
+        </table>
+    </div>
+    <div class="details">
+        <h4>Input Detail Pinjam</h4>
+        <table width="80%">
+            <tr>
+                <td>Nama Judul Buku</td>
+                <td>Jumlah Buku</td>
+               
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="namaSubaspek" />
+                    <span class="error">Nama Sub Dibutuhkan</span>
+                </td>
+                <td>
+                    <input type="text" id="orderNo" />
+                    <span class="error">Masukkan NamaPembuat</span>
+                </td>
+              
+                <td>
+                    <input type="button" id="add" value="add" />
+                </td>
+            </tr>
+        </table>
+        <div id="orderItems" class="tablecontainer">
+
+        </div>
+        <div style="padding:10px 0px; text-align:right">
+            <input id="submit" type="button" value="Save" style="padding:10px 20px" />
+        </div>
+       
+    </div>
+</div>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        //Date Picker
+        $(function () {
+            $('#dibuatPada').datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeyear: true,
+                changemonth: true
+            });
+        });
+        $(function () {
+            $('#createdDate').datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeyear: true,
+                changemonth: true
+            });
+        });
+        $(function () {
+
+            $('#namaAspek').keydown(function (e) {
+
+                if (e.shiftKey || e.ctrlKey || e.altKey) {
+
+                    e.preventDefault();
+
+                } else {
+
+                    var key = e.keyCode;
+
+                    if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+
+                        e.preventDefault();
+
+                    }
+
+                }
+
+            });
+
+        });
+        $(function () {
+
+            $('#namaSubaspek').keydown(function (e) {
+
+                if (e.shiftKey || e.ctrlKey || e.altKey) {
+
+                    e.preventDefault();
+
+                } else {
+
+                    var key = e.keyCode;
+
+                    if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+
+                        e.preventDefault();
+
+                    }
+
+                }
+
+            });
+
+        });
+        $(document).ready(function () {
+            var orderItems = [];
+            //Add button click function
+            $('#add').click(function () {
+                //Check validation of order item
+                var isValidItem = true;
+              
+                if ($('#namaSubaspek').val().trim() == '') {
+                    isValidItem = false;
+                    $('#namaSubaspek').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#namaSubaspek').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if ($('#itemNo').val().trim() == '') {
+                    isValidItem = false;
+                    $('#itemNo').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#itemNo').siblings('span.error').css('visibility', 'hidden');
+                }
+
+
+                //Add item to list if valid
+                if (isValidItem) {
+                    //var status = $('#status').is(":checked");
+                    orderItems.push({
+                       
+                        judul: $('#namaSubaspek').val().trim(),
+                      
+                        jumlah: $('#itemNo').val().trim()
+                       
+                    });
+
+                    //Clear fields
+                    $('#namaSubaspek').val('').focus();
+                    $('#itemNo').val('');
+
+                }
+                //populate order items
+                GeneratedItemsTable();
+
+            });
+            //Save button click function
+            $('#submit').click(function () {
+                //validation of order
+                var isAllValid = true;
+                if (orderItems.length == 0) {
+                    $('#orderItems').html('<span style="color:red;">Please add Aspek/SubAspek</span>');
+                    isAllValid = false;
+                }
+
+               
+
+                if ($('#dibuatPada').val().trim() == '') {
+                    $('#dibuatPada').siblings('span.error').css('visibility', 'visible');
+                    isAllValid = false;
+                }
+                else {
+                    $('#dibuatPada').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                //Save if valid
+                if (isAllValid) {
+                    //var status1 = $("#activeStatus").is(":checked");
+                    var data = {
+                        //ID_KARYAWAN:$('#productCategory').val().trim(),
+                        judul : $('#namaAspek').val().trim(),
+                        tanggalPinjam : $('#dibuatOleh').val().trim(),
+                       
+                        detailPinjam : orderItems
+                    }
+
+                    $(this).val('Please wait...');
+
+           
+                    $.ajax({
+                        url: '/Home/Tambah',
+                        type: "POST",
+                        data: JSON.stringify(data),
+                        dataType: "JSON",
+                        contentType: "application/json",
+                        success: function (d) {
+                            //check is successfully save to database
+                            if (d.status == true) {
+                                //will send status from server side
+                                alert('Successfully done.');
+                                //clear form
+                                orderItems = [];
+                               
+                                $('#namaSubAspek').val('');
+                                $('#dibuatPada').val('');
+                              
+                                $('#orderItems').empty();
+
+                            }
+                            else {
+                                alert('Failed');
+                            }
+                            $('#submit').val('Save');
+                        },
+                        error: function () {
+                            alert('Error. Please try again.');
+                            $('#submit').val('Save');
+                        }
+                    });
+                }
+
+            });
+
+            //function for show added items in table
+            function GeneratedItemsTable() {
+                if (orderItems.length > 0) {
+                    var $table = $('<table/>');
+                    $table.append('<thead><tr><th>Nama SubAspek</th><th>Dibuat Oleh</th><th>Dibuat Pada</th><th>Bobot</th><th>Status</th></tr></thead>');
+                    var $tbody = $('<tbody/>');
+                    $.each(orderItems, function (i, val) {
+                        var $row = $('<tr/>');
+                        $row.append($('<td/>').html(val.judul));
+                        $row.append($('<td/>').html(val.tanggalPinjam));
+                        $row.append($('<td/>').html(val.jumlah));
+                     
+                        $tbody.append($row);
+                    });
+                    $table.append($tbody);
+                    $('#orderItems').html($table);
+                }
+            }
+        });
+
+    </script>
+}
+
+
+<style>
+    /*Adding some css for looks good*/
+    span.error {
+        display: block;
+        visibility: hidden;
+        color: red;
+        font-size: 90%;
+    }
+
+
+    /*css for table*/
+    .container td {
+        vertical-align: top;
+    }
+
+    .tablecontainer table {
+        width: 100%;
+        border-collapse: collapse;
+        border-top: 1px solid #BFAEAE;
+        border-right: 1px solid #BFAEAE;
+    }
+
+    .tablecontainer th {
+        border-bottom: 2px solid #BFAEAE !important;
+    }
+
+    .tablecontainer th, .tablecontainer td {
+        text-align: left;
+        border-left: 1px solid #BFAEAE;
+        padding: 5px;
+        border-bottom: 1px solid #BFAEAE;
+    }
+
+    .ui-widget {
+        font-size: 12px !important;
+    }
+</style>

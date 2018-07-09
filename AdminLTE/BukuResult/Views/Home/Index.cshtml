@@ -1,0 +1,234 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div class="container" style="max-width:640px">
+    @*<div class="master">
+        <h4>Buku details</h4>
+        <table>
+            <tr>               
+                <td>Tanggal Pinjam</td>              
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="orderDate" />
+                    <span class="error">Order no required</span>
+                </td>
+            </tr>
+        </table>
+    </div>*@
+    <div class="details">
+        @*<h4>Buku Items</h4>*@
+        <table width="100%">
+            <tr>
+                <td>Tanggal Pinjam</td>
+                <td>&nbsp;</td>
+
+                <td> Judul Buku </td>
+                <td>&nbsp;</td>
+
+                <td> Jumlah </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="orderDate" />
+                    <span class="error">Order no required</span>
+                </td>
+
+                <td>
+                    <input type="text" id="itemName" />
+                    <span class="error">nama buku required</span>
+                </td>
+
+                <td>
+                    <input type="text" id="quantity" />
+                    <span class="error">jumlah buku required</span>
+                </td>
+
+                <td>
+                    <input type="button" id="add" value="add" />
+                </td>
+            </tr>
+        </table>
+        <div id="detailpinjam" class="tablecontainer">
+
+        </div>
+        <div style="padding:10px 0px; text-align:right">
+            <input id="submit" type="button" value="Save" style="padding:10px 20px" />
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+@section Scripts{
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        //Date Picker
+        $(function () {
+            $('#orderDate').datepicker({
+                dateFormat : 'yy-mm-dd'
+            });
+        });
+        
+        $(document).ready(function () {
+            
+            var detailpinjam = [];
+            //Add button click function
+            $('#add').click(function () {
+                //Check validation of order item
+                var isValidItem = true;
+                if ($('#itemName').val().trim() == '') {
+                    isValidItem = false;
+                    $('#itemName').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#itemName').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if (!($('#quantity').val().trim() != '' && !isNaN($('#quantity').val().trim()))) {
+                    isValidItem = false;
+                    $('#quantity').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#quantity').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                //Add item to list if valid
+                if (isValidItem) {
+                    detailpinjam.push({    
+                        judul: $('#itemName').val().trim(),
+                        jumlah: $('#quantity').val().trim()
+                       
+                    });
+
+                    //Clear fields
+                    $('#itemName').val('').focus();
+                    $('#quantity').val('');
+
+                }
+                //populate order items
+                GeneratedItemsTable();
+
+            });
+            //Save button click function
+            $('#submit').click(function () {
+                //validation of order
+                var isAllValid = true;
+                if (detailpinjam.length == 0) {
+                    $('#detailpinjam').html('<span style="color:red;">Please add order items</span>');
+                    isAllValid = false;
+                }
+
+                if ($('#orderDate').val().trim() == '') {
+                    $('#orderDate').siblings('span.error').css('visibility', 'visible');
+                    isAllValid = false;
+                }
+                else {
+                    $('#orderDate').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                //Save if valid
+                if (isAllValid) {
+                    var data = {
+                        tanggalPinjam: $('#orderDate').val().trim(),
+                        buku: $('#orderName').val().trim(),
+                        
+                        detailpinjam: detailpinjam
+                    }
+
+                    $(this).val('Please wait...');
+
+                    $.ajax({
+                        url: '/Home/SavePinjam',
+                        type: "POST",
+                        data: JSON.stringify(data),
+                        dataType: "JSON",
+                        contentType: "application/json",
+                        success: function (d) {
+                            //check is successfully save to database
+                            if (d.status == true) {
+                                //will send status from server side
+                                alert('Successfully done.');
+                                //clear form
+                                detailpinjam = [];
+                                $('#orderNo').val('');
+                                $('#orderDate').val('');
+                                $('#detailpinjam').empty();
+                            }
+                            else {
+                                alert('Failed');
+                            }
+                            $('#submit').val('Save');
+                        },
+                        error: function () {
+                            alert('Error. Please try again.');
+                            $('#submit').val('Save');
+                        }
+                    });
+                }
+
+            });
+            //function for show added items in table
+            function GeneratedItemsTable() {
+                if (detailpinjam.length > 0) {
+                    var $table = $('<table/>');
+                    $table.append('<thead><tr><th>Tanggal Pinjam</th><th>Judul Buku</th><th>Jumlah Buku</th></tr></thead>');
+                    var $tbody = $('<tbody/>');
+                    $.each(detailpinjam, function (i, val) {
+                        var $row = $('<tr/>');
+                        $row.append($('<td/>').html(val.tanggalPinjam));
+                        $row.append($('<td/>').html(val.judul));
+                        $row.append($('<td/>').html(val.jumlah));
+                        //$row.append($('<td/>').html(val.TotalAmount));
+                        $tbody.append($row);
+                    });
+                    $table.append($tbody);
+                    $('#detailpinjam').html($table);
+                }
+            }
+        });
+
+    </script>
+}
+
+<style>
+    /*Adding some css for looks good*/
+    span.error {
+        display: block;
+        visibility: hidden;
+        color: red;
+        font-size: 90%;
+    }
+
+
+    /*css for table*/
+    .container td {
+        vertical-align: top;
+    }
+
+    .tablecontainer table {
+        width: 100%;
+        
+        border-collapse: collapse;
+        border-top: 1px solid #BFAEAE;
+        border-right: 1px solid #BFAEAE;
+    }
+
+    .tablecontainer th {
+        border-bottom: 2px solid #BFAEAE !important;
+    }
+
+    .tablecontainer th, .tablecontainer td {
+        text-align: left;
+        border-left: 1px solid #BFAEAE;
+        padding: 5px;
+        border-bottom: 1px solid #BFAEAE;
+    }
+
+    .ui-widget {
+        font-size: 12px !important;
+    }
+</style>

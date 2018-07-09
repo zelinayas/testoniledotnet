@@ -1,0 +1,1016 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TesttimemeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="255" />
+          <Property Name="create_date" Type="date" />
+          <Property Name="keterangan" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="update_by" Type="varchar" MaxLength="255" />
+          <Property Name="update_date" Type="date" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="nama" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="peserta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="255" />
+          <Property Name="create_date" Type="date" />
+          <Property Name="keterangan" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="update_by" Type="varchar" MaxLength="255" />
+          <Property Name="update_date" Type="date" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="peserta_jawaban_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="255" />
+          <Property Name="create_date" Type="date" />
+          <Property Name="keterangan" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="update_by" Type="varchar" MaxLength="255" />
+          <Property Name="update_date" Type="date" />
+          <Property Name="jawaban_peserta" Type="varchar" MaxLength="255" />
+          <Property Name="pesertatest_id" Type="bigint" />
+          <Property Name="soal_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="peserta_profil">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="255" />
+          <Property Name="create_date" Type="date" />
+          <Property Name="keterangan" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="update_by" Type="varchar" MaxLength="255" />
+          <Property Name="update_date" Type="date" />
+          <Property Name="alamat_peserta" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nama_foto" Type="varchar" MaxLength="100" />
+          <Property Name="nama_peserta" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="no_telp" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="tanggal_lahir" Type="varchar" MaxLength="255" />
+          <Property Name="tempat_lahir" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="peserta_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="peserta_test">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="255" />
+          <Property Name="create_date" Type="date" />
+          <Property Name="keterangan" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="update_by" Type="varchar" MaxLength="255" />
+          <Property Name="update_date" Type="date" />
+          <Property Name="peserta_id" Type="bigint" />
+          <Property Name="test_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="soal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="255" />
+          <Property Name="create_date" Type="date" />
+          <Property Name="keterangan" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="update_by" Type="varchar" MaxLength="255" />
+          <Property Name="update_date" Type="date" />
+          <Property Name="nilai_soal" Type="int" Nullable="false" />
+          <Property Name="isi_soal" Type="varchar" MaxLength="255" />
+          <Property Name="soal_kelompok_id" Type="bigint" />
+          <Property Name="soal_type_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="soal_kelompok">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="255" />
+          <Property Name="create_date" Type="date" />
+          <Property Name="keterangan" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="update_by" Type="varchar" MaxLength="255" />
+          <Property Name="update_date" Type="date" />
+          <Property Name="nama_kelompok_soal" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="soal_pilihan_jawaban">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="255" />
+          <Property Name="create_date" Type="date" />
+          <Property Name="keterangan" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="update_by" Type="varchar" MaxLength="255" />
+          <Property Name="update_date" Type="date" />
+          <Property Name="kuncijawaban" Type="int" Nullable="false" />
+          <Property Name="pilihanjawaban1" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="soal_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="soal_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="255" />
+          <Property Name="create_date" Type="date" />
+          <Property Name="keterangan" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="update_by" Type="varchar" MaxLength="255" />
+          <Property Name="update_date" Type="date" />
+          <Property Name="nama_type_soal" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="255" />
+          <Property Name="create_date" Type="date" />
+          <Property Name="keterangan" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="update_by" Type="varchar" MaxLength="255" />
+          <Property Name="update_date" Type="date" />
+          <Property Name="nama_test" Type="varchar" MaxLength="255" />
+          <Property Name="tgl_test" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="test_sub">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="255" />
+          <Property Name="create_date" Type="date" />
+          <Property Name="keterangan" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="update_by" Type="varchar" MaxLength="255" />
+          <Property Name="update_date" Type="date" />
+          <Property Name="nama_test_sub" Type="varchar" MaxLength="255" />
+          <Property Name="test_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="test_sub_soal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="255" />
+          <Property Name="create_date" Type="date" />
+          <Property Name="keterangan" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="update_by" Type="varchar" MaxLength="255" />
+          <Property Name="update_date" Type="date" />
+          <Property Name="soal_id" Type="bigint" />
+          <Property Name="test_sub_id" Type="bigint" />
+        </EntityType>
+        <Association Name="FK17fx4kuald4bhd0hdahwht6m9">
+          <End Role="soal" Type="Self.soal" Multiplicity="0..1" />
+          <End Role="peserta_jawaban_detail" Type="Self.peserta_jawaban_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="peserta_jawaban_detail">
+              <PropertyRef Name="soal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK33kgxknk8m95q1wxmyekxcbll">
+          <End Role="test" Type="Self.test" Multiplicity="0..1" />
+          <End Role="peserta_test" Type="Self.peserta_test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="peserta_test">
+              <PropertyRef Name="test_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK9bfpjwm4lr6mp1msl5ur65qhs">
+          <End Role="test" Type="Self.test" Multiplicity="0..1" />
+          <End Role="test_sub" Type="Self.test_sub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="test_sub">
+              <PropertyRef Name="test_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK9remes9a11kjdqoi1o4fptgeu">
+          <End Role="peserta" Type="Self.peserta" Multiplicity="0..1" />
+          <End Role="peserta_test" Type="Self.peserta_test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="peserta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="peserta_test">
+              <PropertyRef Name="peserta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKitjix8o6qnyc5itn4ib2gmqvm">
+          <End Role="test_sub" Type="Self.test_sub" Multiplicity="0..1" />
+          <End Role="test_sub_soal" Type="Self.test_sub_soal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test_sub">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="test_sub_soal">
+              <PropertyRef Name="test_sub_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKk9xa5vfl23cyi1bvk61wrh9dc">
+          <End Role="soal_type" Type="Self.soal_type" Multiplicity="0..1" />
+          <End Role="soal" Type="Self.soal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soal_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="soal">
+              <PropertyRef Name="soal_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKmvddj0adltdu7kqjycmwiuiwr">
+          <End Role="soal_kelompok" Type="Self.soal_kelompok" Multiplicity="0..1" />
+          <End Role="soal" Type="Self.soal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soal_kelompok">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="soal">
+              <PropertyRef Name="soal_kelompok_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKn68db9r0w3dsqnhx1qua2ct4n">
+          <End Role="peserta" Type="Self.peserta" Multiplicity="0..1" />
+          <End Role="peserta_profil" Type="Self.peserta_profil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="peserta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="peserta_profil">
+              <PropertyRef Name="peserta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKotaslsowte3msnmuvb1ucltkl">
+          <End Role="peserta_test" Type="Self.peserta_test" Multiplicity="0..1" />
+          <End Role="peserta_jawaban_detail" Type="Self.peserta_jawaban_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="peserta_test">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="peserta_jawaban_detail">
+              <PropertyRef Name="pesertatest_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKqk7s361fj4vo3j5h9a4pca01w">
+          <End Role="soal" Type="Self.soal" Multiplicity="0..1" />
+          <End Role="test_sub_soal" Type="Self.test_sub_soal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="test_sub_soal">
+              <PropertyRef Name="soal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKsxfrhg7ionch0bow2120y36pb">
+          <End Role="soal" Type="Self.soal" Multiplicity="0..1" />
+          <End Role="soal_pilihan_jawaban" Type="Self.soal_pilihan_jawaban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="soal_pilihan_jawaban">
+              <PropertyRef Name="soal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TesttimemeModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="peserta" EntityType="Self.peserta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="peserta_jawaban_detail" EntityType="Self.peserta_jawaban_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="peserta_profil" EntityType="Self.peserta_profil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="peserta_test" EntityType="Self.peserta_test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="soal" EntityType="Self.soal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="soal_kelompok" EntityType="Self.soal_kelompok" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="soal_pilihan_jawaban" EntityType="Self.soal_pilihan_jawaban" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="soal_type" EntityType="Self.soal_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="test" EntityType="Self.test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="test_sub" EntityType="Self.test_sub" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="test_sub_soal" EntityType="Self.test_sub_soal" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK17fx4kuald4bhd0hdahwht6m9" Association="Self.FK17fx4kuald4bhd0hdahwht6m9">
+            <End Role="soal" EntitySet="soal" />
+            <End Role="peserta_jawaban_detail" EntitySet="peserta_jawaban_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK33kgxknk8m95q1wxmyekxcbll" Association="Self.FK33kgxknk8m95q1wxmyekxcbll">
+            <End Role="test" EntitySet="test" />
+            <End Role="peserta_test" EntitySet="peserta_test" />
+          </AssociationSet>
+          <AssociationSet Name="FK9bfpjwm4lr6mp1msl5ur65qhs" Association="Self.FK9bfpjwm4lr6mp1msl5ur65qhs">
+            <End Role="test" EntitySet="test" />
+            <End Role="test_sub" EntitySet="test_sub" />
+          </AssociationSet>
+          <AssociationSet Name="FK9remes9a11kjdqoi1o4fptgeu" Association="Self.FK9remes9a11kjdqoi1o4fptgeu">
+            <End Role="peserta" EntitySet="peserta" />
+            <End Role="peserta_test" EntitySet="peserta_test" />
+          </AssociationSet>
+          <AssociationSet Name="FKitjix8o6qnyc5itn4ib2gmqvm" Association="Self.FKitjix8o6qnyc5itn4ib2gmqvm">
+            <End Role="test_sub" EntitySet="test_sub" />
+            <End Role="test_sub_soal" EntitySet="test_sub_soal" />
+          </AssociationSet>
+          <AssociationSet Name="FKk9xa5vfl23cyi1bvk61wrh9dc" Association="Self.FKk9xa5vfl23cyi1bvk61wrh9dc">
+            <End Role="soal_type" EntitySet="soal_type" />
+            <End Role="soal" EntitySet="soal" />
+          </AssociationSet>
+          <AssociationSet Name="FKmvddj0adltdu7kqjycmwiuiwr" Association="Self.FKmvddj0adltdu7kqjycmwiuiwr">
+            <End Role="soal_kelompok" EntitySet="soal_kelompok" />
+            <End Role="soal" EntitySet="soal" />
+          </AssociationSet>
+          <AssociationSet Name="FKn68db9r0w3dsqnhx1qua2ct4n" Association="Self.FKn68db9r0w3dsqnhx1qua2ct4n">
+            <End Role="peserta" EntitySet="peserta" />
+            <End Role="peserta_profil" EntitySet="peserta_profil" />
+          </AssociationSet>
+          <AssociationSet Name="FKotaslsowte3msnmuvb1ucltkl" Association="Self.FKotaslsowte3msnmuvb1ucltkl">
+            <End Role="peserta_test" EntitySet="peserta_test" />
+            <End Role="peserta_jawaban_detail" EntitySet="peserta_jawaban_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FKqk7s361fj4vo3j5h9a4pca01w" Association="Self.FKqk7s361fj4vo3j5h9a4pca01w">
+            <End Role="soal" EntitySet="soal" />
+            <End Role="test_sub_soal" EntitySet="test_sub_soal" />
+          </AssociationSet>
+          <AssociationSet Name="FKsxfrhg7ionch0bow2120y36pb" Association="Self.FKsxfrhg7ionch0bow2120y36pb">
+            <End Role="soal" EntitySet="soal" />
+            <End Role="soal_pilihan_jawaban" EntitySet="soal_pilihan_jawaban" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TesttimemeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nama" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="peserta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="peserta_test" Relationship="Self.FK9remes9a11kjdqoi1o4fptgeu" FromRole="peserta" ToRole="peserta_test" />
+          <NavigationProperty Name="peserta_profil" Relationship="Self.FKn68db9r0w3dsqnhx1qua2ct4n" FromRole="peserta" ToRole="peserta_profil" />
+        </EntityType>
+        <EntityType Name="peserta_jawaban_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <Property Name="jawaban_peserta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pesertatest_id" Type="Int64" />
+          <Property Name="soal_id" Type="Int64" />
+          <NavigationProperty Name="soal" Relationship="Self.FK17fx4kuald4bhd0hdahwht6m9" FromRole="peserta_jawaban_detail" ToRole="soal" />
+          <NavigationProperty Name="peserta_test" Relationship="Self.FKotaslsowte3msnmuvb1ucltkl" FromRole="peserta_jawaban_detail" ToRole="peserta_test" />
+        </EntityType>
+        <EntityType Name="peserta_profil">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <Property Name="alamat_peserta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nama_foto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nama_peserta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="no_telp" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tanggal_lahir" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tempat_lahir" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="peserta_id" Type="Int64" />
+          <NavigationProperty Name="peserta" Relationship="Self.FKn68db9r0w3dsqnhx1qua2ct4n" FromRole="peserta_profil" ToRole="peserta" />
+        </EntityType>
+        <EntityType Name="peserta_test">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <Property Name="peserta_id" Type="Int64" />
+          <Property Name="test_id" Type="Int64" />
+          <NavigationProperty Name="peserta" Relationship="Self.FK9remes9a11kjdqoi1o4fptgeu" FromRole="peserta_test" ToRole="peserta" />
+          <NavigationProperty Name="peserta_jawaban_detail" Relationship="Self.FKotaslsowte3msnmuvb1ucltkl" FromRole="peserta_test" ToRole="peserta_jawaban_detail" />
+          <NavigationProperty Name="test" Relationship="Self.FK33kgxknk8m95q1wxmyekxcbll" FromRole="peserta_test" ToRole="test" />
+        </EntityType>
+        <EntityType Name="soal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <Property Name="nilai_soal" Type="Int32" Nullable="false" />
+          <Property Name="soal_kelompok_id" Type="Int64" />
+          <Property Name="soal_type_id" Type="Int64" />
+          <NavigationProperty Name="peserta_jawaban_detail" Relationship="Self.FK17fx4kuald4bhd0hdahwht6m9" FromRole="soal" ToRole="peserta_jawaban_detail" />
+          <NavigationProperty Name="soal_type" Relationship="Self.FKk9xa5vfl23cyi1bvk61wrh9dc" FromRole="soal" ToRole="soal_type" />
+          <NavigationProperty Name="soal_kelompok" Relationship="Self.FKmvddj0adltdu7kqjycmwiuiwr" FromRole="soal" ToRole="soal_kelompok" />
+          <NavigationProperty Name="test_sub_soal" Relationship="Self.FKqk7s361fj4vo3j5h9a4pca01w" FromRole="soal" ToRole="test_sub_soal" />
+          <NavigationProperty Name="soal_pilihan_jawaban" Relationship="Self.FKsxfrhg7ionch0bow2120y36pb" FromRole="soal" ToRole="soal_pilihan_jawaban" />
+          <Property Name="isi_soal" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="soal_kelompok">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <Property Name="nama_kelompok_soal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="soal" Relationship="Self.FKmvddj0adltdu7kqjycmwiuiwr" FromRole="soal_kelompok" ToRole="soal" />
+        </EntityType>
+        <EntityType Name="soal_pilihan_jawaban">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <Property Name="kuncijawaban" Type="Int32" Nullable="false" />
+          <Property Name="pilihanjawaban1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soal_id" Type="Int64" />
+          <NavigationProperty Name="soal" Relationship="Self.FKsxfrhg7ionch0bow2120y36pb" FromRole="soal_pilihan_jawaban" ToRole="soal" />
+        </EntityType>
+        <EntityType Name="soal_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <Property Name="nama_type_soal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="soal" Relationship="Self.FKk9xa5vfl23cyi1bvk61wrh9dc" FromRole="soal_type" ToRole="soal" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <Property Name="nama_test" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tgl_test" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="peserta_test" Relationship="Self.FK33kgxknk8m95q1wxmyekxcbll" FromRole="test" ToRole="peserta_test" />
+          <NavigationProperty Name="test_sub" Relationship="Self.FK9bfpjwm4lr6mp1msl5ur65qhs" FromRole="test" ToRole="test_sub" />
+        </EntityType>
+        <EntityType Name="test_sub">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <Property Name="nama_test_sub" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="test_id" Type="Int64" />
+          <NavigationProperty Name="test" Relationship="Self.FK9bfpjwm4lr6mp1msl5ur65qhs" FromRole="test_sub" ToRole="test" />
+          <NavigationProperty Name="test_sub_soal" Relationship="Self.FKitjix8o6qnyc5itn4ib2gmqvm" FromRole="test_sub" ToRole="test_sub_soal" />
+        </EntityType>
+        <EntityType Name="test_sub_soal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <Property Name="soal_id" Type="Int64" />
+          <Property Name="test_sub_id" Type="Int64" />
+          <NavigationProperty Name="soal" Relationship="Self.FKqk7s361fj4vo3j5h9a4pca01w" FromRole="test_sub_soal" ToRole="soal" />
+          <NavigationProperty Name="test_sub" Relationship="Self.FKitjix8o6qnyc5itn4ib2gmqvm" FromRole="test_sub_soal" ToRole="test_sub" />
+        </EntityType>
+        <Association Name="FK9remes9a11kjdqoi1o4fptgeu">
+          <End Role="peserta" Type="Self.peserta" Multiplicity="0..1" />
+          <End Role="peserta_test" Type="Self.peserta_test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="peserta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="peserta_test">
+              <PropertyRef Name="peserta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKn68db9r0w3dsqnhx1qua2ct4n">
+          <End Role="peserta" Type="Self.peserta" Multiplicity="0..1" />
+          <End Role="peserta_profil" Type="Self.peserta_profil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="peserta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="peserta_profil">
+              <PropertyRef Name="peserta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK17fx4kuald4bhd0hdahwht6m9">
+          <End Role="soal" Type="Self.soal" Multiplicity="0..1" />
+          <End Role="peserta_jawaban_detail" Type="Self.peserta_jawaban_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="peserta_jawaban_detail">
+              <PropertyRef Name="soal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKotaslsowte3msnmuvb1ucltkl">
+          <End Role="peserta_test" Type="Self.peserta_test" Multiplicity="0..1" />
+          <End Role="peserta_jawaban_detail" Type="Self.peserta_jawaban_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="peserta_test">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="peserta_jawaban_detail">
+              <PropertyRef Name="pesertatest_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK33kgxknk8m95q1wxmyekxcbll">
+          <End Role="test" Type="Self.test" Multiplicity="0..1" />
+          <End Role="peserta_test" Type="Self.peserta_test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="peserta_test">
+              <PropertyRef Name="test_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKk9xa5vfl23cyi1bvk61wrh9dc">
+          <End Role="soal_type" Type="Self.soal_type" Multiplicity="0..1" />
+          <End Role="soal" Type="Self.soal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soal_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="soal">
+              <PropertyRef Name="soal_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKmvddj0adltdu7kqjycmwiuiwr">
+          <End Role="soal_kelompok" Type="Self.soal_kelompok" Multiplicity="0..1" />
+          <End Role="soal" Type="Self.soal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soal_kelompok">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="soal">
+              <PropertyRef Name="soal_kelompok_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKqk7s361fj4vo3j5h9a4pca01w">
+          <End Role="soal" Type="Self.soal" Multiplicity="0..1" />
+          <End Role="test_sub_soal" Type="Self.test_sub_soal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="test_sub_soal">
+              <PropertyRef Name="soal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKsxfrhg7ionch0bow2120y36pb">
+          <End Role="soal" Type="Self.soal" Multiplicity="0..1" />
+          <End Role="soal_pilihan_jawaban" Type="Self.soal_pilihan_jawaban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="soal_pilihan_jawaban">
+              <PropertyRef Name="soal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK9bfpjwm4lr6mp1msl5ur65qhs">
+          <End Role="test" Type="Self.test" Multiplicity="0..1" />
+          <End Role="test_sub" Type="Self.test_sub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="test_sub">
+              <PropertyRef Name="test_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKitjix8o6qnyc5itn4ib2gmqvm">
+          <End Role="test_sub" Type="Self.test_sub" Multiplicity="0..1" />
+          <End Role="test_sub_soal" Type="Self.test_sub_soal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test_sub">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="test_sub_soal">
+              <PropertyRef Name="test_sub_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TesttimemeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admin" EntityType="Self.admin" />
+          <EntitySet Name="peserta" EntityType="Self.peserta" />
+          <EntitySet Name="peserta_jawaban_detail" EntityType="Self.peserta_jawaban_detail" />
+          <EntitySet Name="peserta_profil" EntityType="Self.peserta_profil" />
+          <EntitySet Name="peserta_test" EntityType="Self.peserta_test" />
+          <EntitySet Name="soal" EntityType="Self.soal" />
+          <EntitySet Name="soal_kelompok" EntityType="Self.soal_kelompok" />
+          <EntitySet Name="soal_pilihan_jawaban" EntityType="Self.soal_pilihan_jawaban" />
+          <EntitySet Name="soal_type" EntityType="Self.soal_type" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="test" EntityType="Self.test" />
+          <EntitySet Name="test_sub" EntityType="Self.test_sub" />
+          <EntitySet Name="test_sub_soal" EntityType="Self.test_sub_soal" />
+          <AssociationSet Name="FK9remes9a11kjdqoi1o4fptgeu" Association="Self.FK9remes9a11kjdqoi1o4fptgeu">
+            <End Role="peserta" EntitySet="peserta" />
+            <End Role="peserta_test" EntitySet="peserta_test" />
+          </AssociationSet>
+          <AssociationSet Name="FKn68db9r0w3dsqnhx1qua2ct4n" Association="Self.FKn68db9r0w3dsqnhx1qua2ct4n">
+            <End Role="peserta" EntitySet="peserta" />
+            <End Role="peserta_profil" EntitySet="peserta_profil" />
+          </AssociationSet>
+          <AssociationSet Name="FK17fx4kuald4bhd0hdahwht6m9" Association="Self.FK17fx4kuald4bhd0hdahwht6m9">
+            <End Role="soal" EntitySet="soal" />
+            <End Role="peserta_jawaban_detail" EntitySet="peserta_jawaban_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FKotaslsowte3msnmuvb1ucltkl" Association="Self.FKotaslsowte3msnmuvb1ucltkl">
+            <End Role="peserta_test" EntitySet="peserta_test" />
+            <End Role="peserta_jawaban_detail" EntitySet="peserta_jawaban_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK33kgxknk8m95q1wxmyekxcbll" Association="Self.FK33kgxknk8m95q1wxmyekxcbll">
+            <End Role="test" EntitySet="test" />
+            <End Role="peserta_test" EntitySet="peserta_test" />
+          </AssociationSet>
+          <AssociationSet Name="FKk9xa5vfl23cyi1bvk61wrh9dc" Association="Self.FKk9xa5vfl23cyi1bvk61wrh9dc">
+            <End Role="soal_type" EntitySet="soal_type" />
+            <End Role="soal" EntitySet="soal" />
+          </AssociationSet>
+          <AssociationSet Name="FKmvddj0adltdu7kqjycmwiuiwr" Association="Self.FKmvddj0adltdu7kqjycmwiuiwr">
+            <End Role="soal_kelompok" EntitySet="soal_kelompok" />
+            <End Role="soal" EntitySet="soal" />
+          </AssociationSet>
+          <AssociationSet Name="FKqk7s361fj4vo3j5h9a4pca01w" Association="Self.FKqk7s361fj4vo3j5h9a4pca01w">
+            <End Role="soal" EntitySet="soal" />
+            <End Role="test_sub_soal" EntitySet="test_sub_soal" />
+          </AssociationSet>
+          <AssociationSet Name="FKsxfrhg7ionch0bow2120y36pb" Association="Self.FKsxfrhg7ionch0bow2120y36pb">
+            <End Role="soal" EntitySet="soal" />
+            <End Role="soal_pilihan_jawaban" EntitySet="soal_pilihan_jawaban" />
+          </AssociationSet>
+          <AssociationSet Name="FK9bfpjwm4lr6mp1msl5ur65qhs" Association="Self.FK9bfpjwm4lr6mp1msl5ur65qhs">
+            <End Role="test" EntitySet="test" />
+            <End Role="test_sub" EntitySet="test_sub" />
+          </AssociationSet>
+          <AssociationSet Name="FKitjix8o6qnyc5itn4ib2gmqvm" Association="Self.FKitjix8o6qnyc5itn4ib2gmqvm">
+            <End Role="test_sub" EntitySet="test_sub" />
+            <End Role="test_sub_soal" EntitySet="test_sub_soal" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TesttimemeModelStoreContainer" CdmEntityContainer="TesttimemeEntities">
+          <EntitySetMapping Name="admin">
+            <EntityTypeMapping TypeName="TesttimemeModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nama" ColumnName="nama" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="peserta">
+            <EntityTypeMapping TypeName="TesttimemeModel.peserta">
+              <MappingFragment StoreEntitySet="peserta">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="peserta_jawaban_detail">
+            <EntityTypeMapping TypeName="TesttimemeModel.peserta_jawaban_detail">
+              <MappingFragment StoreEntitySet="peserta_jawaban_detail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="jawaban_peserta" ColumnName="jawaban_peserta" />
+                <ScalarProperty Name="pesertatest_id" ColumnName="pesertatest_id" />
+                <ScalarProperty Name="soal_id" ColumnName="soal_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="peserta_profil">
+            <EntityTypeMapping TypeName="TesttimemeModel.peserta_profil">
+              <MappingFragment StoreEntitySet="peserta_profil">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="alamat_peserta" ColumnName="alamat_peserta" />
+                <ScalarProperty Name="nama_foto" ColumnName="nama_foto" />
+                <ScalarProperty Name="nama_peserta" ColumnName="nama_peserta" />
+                <ScalarProperty Name="no_telp" ColumnName="no_telp" />
+                <ScalarProperty Name="tanggal_lahir" ColumnName="tanggal_lahir" />
+                <ScalarProperty Name="tempat_lahir" ColumnName="tempat_lahir" />
+                <ScalarProperty Name="peserta_id" ColumnName="peserta_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="peserta_test">
+            <EntityTypeMapping TypeName="TesttimemeModel.peserta_test">
+              <MappingFragment StoreEntitySet="peserta_test">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="peserta_id" ColumnName="peserta_id" />
+                <ScalarProperty Name="test_id" ColumnName="test_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="soal">
+            <EntityTypeMapping TypeName="TesttimemeModel.soal">
+              <MappingFragment StoreEntitySet="soal">
+                <ScalarProperty Name="isi_soal" ColumnName="isi_soal" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="nilai_soal" ColumnName="nilai_soal" />
+                <ScalarProperty Name="soal_kelompok_id" ColumnName="soal_kelompok_id" />
+                <ScalarProperty Name="soal_type_id" ColumnName="soal_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="soal_kelompok">
+            <EntityTypeMapping TypeName="TesttimemeModel.soal_kelompok">
+              <MappingFragment StoreEntitySet="soal_kelompok">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="nama_kelompok_soal" ColumnName="nama_kelompok_soal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="soal_pilihan_jawaban">
+            <EntityTypeMapping TypeName="TesttimemeModel.soal_pilihan_jawaban">
+              <MappingFragment StoreEntitySet="soal_pilihan_jawaban">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="kuncijawaban" ColumnName="kuncijawaban" />
+                <ScalarProperty Name="pilihanjawaban1" ColumnName="pilihanjawaban1" />
+                <ScalarProperty Name="soal_id" ColumnName="soal_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="soal_type">
+            <EntityTypeMapping TypeName="TesttimemeModel.soal_type">
+              <MappingFragment StoreEntitySet="soal_type">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="nama_type_soal" ColumnName="nama_type_soal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TesttimemeModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="test">
+            <EntityTypeMapping TypeName="TesttimemeModel.test">
+              <MappingFragment StoreEntitySet="test">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="nama_test" ColumnName="nama_test" />
+                <ScalarProperty Name="tgl_test" ColumnName="tgl_test" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="test_sub">
+            <EntityTypeMapping TypeName="TesttimemeModel.test_sub">
+              <MappingFragment StoreEntitySet="test_sub">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="nama_test_sub" ColumnName="nama_test_sub" />
+                <ScalarProperty Name="test_id" ColumnName="test_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="test_sub_soal">
+            <EntityTypeMapping TypeName="TesttimemeModel.test_sub_soal">
+              <MappingFragment StoreEntitySet="test_sub_soal">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="soal_id" ColumnName="soal_id" />
+                <ScalarProperty Name="test_sub_id" ColumnName="test_sub_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

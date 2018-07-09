@@ -1,0 +1,30 @@
+﻿@model IEnumerable<PesertaNET.Models.test>
+
+@{
+    ViewBag.Title = "HalamanPesertaSoal";
+    Layout = "~/Views/Shared/_Header.cshtml";
+}
+
+<h2>HalamanPesertaSoal</h2>
+
+
+<table class="table">
+   
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.test_sub_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

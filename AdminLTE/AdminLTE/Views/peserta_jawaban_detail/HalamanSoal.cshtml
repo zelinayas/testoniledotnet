@@ -1,0 +1,133 @@
+﻿@model AdminLTE.Models.soal
+@{var Nextid = Model.id + 1;}
+
+@{
+    ViewBag.Title = "HalamanSoal";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Peserta TestTime</title>
+    <link rel="icon" type="asset/image/png" href="asset/img/penting.png">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-select.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/css/icheck/blue.min.css">
+    <link rel="stylesheet" href="~/Content/css/AdminLTE.css">
+    <link rel="stylesheet" href="~/Content/css/skins/skin-blue.css">
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+
+
+
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-12">
+                <table class="table">
+
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.isi_soal)
+
+                            @foreach (var item1 in Model.soal_pilihan_jawaban)
+                            {
+                                <div>
+                                    <input type="radio" onclick="enableBtn()" class="form-control pilihan" name="pilihanjawaban1" value="@item1.pilihanjawaban1">  @Html.DisplayFor(modelItem => item1.pilihanjawaban1)
+
+                                </div>
+
+                            }
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-10 col-md-12" id="NextBtn" style="visibility: hidden">
+                @Html.ActionLink("Next", "HalamanSoal", "peserta_jawaban_detail", new { id = Nextid }, null)
+            </div>
+        </div>
+    }
+    <script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
+    <script src="~/Content/js/plugins/bootstrap/bootstrap.js"></script>
+    <script src="~/Content/js/plugins/fastclick/fastclick.js"></script>
+    <script src="~/Content/js/plugins/slimscroll/jquery.slimscroll.js"></script>
+    <script src="~/Content/js/plugins/bootstrap-select/bootstrap-select.js"></script>
+    <script src="~/Content/js/plugins/moment/moment.js"></script>
+    <script src="~/Content/js/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/Content/js/plugins/icheck/icheck.js"></script>
+    @*<script src="~/Content/js/plugins/validator.js"></script>*@
+    <script src="~/Content/js/plugins/inputmask/jquery.inputmask.bundle.js"></script>
+    <script src="~/Content/js/adminlte.js"></script>
+    <script src="~/Content/js/init.js"></script>
+  
+    <script type="text/javascript" id="NextBtn">
+
+        $(document).ready(function () {
+            $("ins").click(function () {
+                console.log($("input[name=pilihanjawaban1]:checked").val());
+                enableBtn();
+            });
+        });
+        function enableBtn() {
+            $("#NextBtn").css("visibility", "visible");
+
+        }
+    </script>
+
+    <script type="text/javascript" id="Next">
+
+            $(document).ready(function () {
+                $("ins").click(function () {
+                    console.log($("input[name=pilihanjawaban1]:checked").val());
+                    enableBtn();
+                });
+        });
+        function localStorage() {
+            if (localStorage) {
+                $(document).ready(function () {
+                    $(".save").click(function () {
+                        // Get input name
+                        var NextBtn = $("#Next").val();
+
+                        // Store data
+                        localStorage.setItem("pilihan_jawaban", NextBtn);
+                        alert("Your first name is saved.");
+                    });
+                    $("#access").click(function () {
+                        // Retrieve data
+                        alert("Hi, " + localStorage.getItem("pilihan_jawaban"));
+                    });
+                });
+            } else {
+                alert("Sorry, your browser do not support local storage.");
+            }
+        }
+    </script>
+    
+
+
+
+</body>
+    
+</html>
+
+
+
+
+

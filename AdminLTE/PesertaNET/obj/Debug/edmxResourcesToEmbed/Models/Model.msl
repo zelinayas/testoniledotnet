@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TesttimemeModelStoreContainer" CdmEntityContainer="TesttimemeEntities">
+    <EntitySetMapping Name="admin">
+      <EntityTypeMapping TypeName="TesttimemeModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="peserta">
+      <EntityTypeMapping TypeName="TesttimemeModel.peserta">
+        <MappingFragment StoreEntitySet="peserta">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="peserta_jawaban_detail">
+      <EntityTypeMapping TypeName="TesttimemeModel.peserta_jawaban_detail">
+        <MappingFragment StoreEntitySet="peserta_jawaban_detail">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="jawaban_peserta" ColumnName="jawaban_peserta" />
+          <ScalarProperty Name="pesertatest_id" ColumnName="pesertatest_id" />
+          <ScalarProperty Name="soal_id" ColumnName="soal_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="peserta_profil">
+      <EntityTypeMapping TypeName="TesttimemeModel.peserta_profil">
+        <MappingFragment StoreEntitySet="peserta_profil">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="alamat_peserta" ColumnName="alamat_peserta" />
+          <ScalarProperty Name="nama_foto" ColumnName="nama_foto" />
+          <ScalarProperty Name="nama_peserta" ColumnName="nama_peserta" />
+          <ScalarProperty Name="no_telp" ColumnName="no_telp" />
+          <ScalarProperty Name="tanggal_lahir" ColumnName="tanggal_lahir" />
+          <ScalarProperty Name="tempat_lahir" ColumnName="tempat_lahir" />
+          <ScalarProperty Name="peserta_id" ColumnName="peserta_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="peserta_test">
+      <EntityTypeMapping TypeName="TesttimemeModel.peserta_test">
+        <MappingFragment StoreEntitySet="peserta_test">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="peserta_id" ColumnName="peserta_id" />
+          <ScalarProperty Name="test_id" ColumnName="test_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="soal">
+      <EntityTypeMapping TypeName="TesttimemeModel.soal">
+        <MappingFragment StoreEntitySet="soal">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="nilai_soal" ColumnName="nilai_soal" />
+          <ScalarProperty Name="isi_soal" ColumnName="isi_soal" />
+          <ScalarProperty Name="soal_kelompok_id" ColumnName="soal_kelompok_id" />
+          <ScalarProperty Name="soal_type_id" ColumnName="soal_type_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="soal_kelompok">
+      <EntityTypeMapping TypeName="TesttimemeModel.soal_kelompok">
+        <MappingFragment StoreEntitySet="soal_kelompok">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="nama_kelompok_soal" ColumnName="nama_kelompok_soal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="soal_pilihan_jawaban">
+      <EntityTypeMapping TypeName="TesttimemeModel.soal_pilihan_jawaban">
+        <MappingFragment StoreEntitySet="soal_pilihan_jawaban">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="kuncijawaban" ColumnName="kuncijawaban" />
+          <ScalarProperty Name="pilihanjawaban1" ColumnName="pilihanjawaban1" />
+          <ScalarProperty Name="soal_id" ColumnName="soal_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="soal_type">
+      <EntityTypeMapping TypeName="TesttimemeModel.soal_type">
+        <MappingFragment StoreEntitySet="soal_type">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="nama_type_soal" ColumnName="nama_type_soal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="TesttimemeModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="test">
+      <EntityTypeMapping TypeName="TesttimemeModel.test">
+        <MappingFragment StoreEntitySet="test">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="nama_test" ColumnName="nama_test" />
+          <ScalarProperty Name="tgl_test" ColumnName="tgl_test" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="test_sub">
+      <EntityTypeMapping TypeName="TesttimemeModel.test_sub">
+        <MappingFragment StoreEntitySet="test_sub">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="nama_test_sub" ColumnName="nama_test_sub" />
+          <ScalarProperty Name="test_id" ColumnName="test_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="test_sub_soal">
+      <EntityTypeMapping TypeName="TesttimemeModel.test_sub_soal">
+        <MappingFragment StoreEntitySet="test_sub_soal">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="soal_id" ColumnName="soal_id" />
+          <ScalarProperty Name="test_sub_id" ColumnName="test_sub_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
